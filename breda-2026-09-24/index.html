@@ -11,11 +11,12 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="breda.css">
   <style>
-    .hero-stage { min-height: 620px; }
-    .hero-block { position: absolute; left: 4%; right: 6%; bottom: 0; height: 110px; }
-    .hero-figure { position: absolute; left: 20%; bottom: 104px; transform: translateX(-50%); width: min(200px, 30%); z-index: 1; }
-    .hero-card { position: absolute; right: 0; top: 6%; max-width: 25ch; z-index: 3; }
-    .hero-disc { position: absolute; left: 46%; bottom: 190px; z-index: 2; }
+    .hero-stage { display: grid; grid-template-columns: minmax(175px, 0.85fr) 1.15fr; gap: 24px; align-items: center; }
+    .hero-figure-wrap { position: relative; min-height: 615px; }
+    .hero-block { position: absolute; left: 2%; right: 6%; bottom: 0; height: 110px; }
+    .hero-figure { position: absolute; left: 50%; bottom: 104px; transform: translateX(-50%); width: min(180px, 60%); }
+    .hero-side { display: grid; gap: 20px; justify-items: start; }
+    .hero-card { max-width: 36ch; }
     .stay, .panels { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
     .kit-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 22px 0 0; }
     .bps-pin-marker {
@@ -25,11 +26,19 @@
       box-shadow: 0 6px 10px -6px rgba(14, 40, 65, .5);
     }
     .legend-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-    @media (max-width: 860px) {
-      .hero-stage { min-height: 520px; }
-      .hero-figure { left: 26%; width: min(160px, 38%); }
-      .hero-card { max-width: 21ch; font-size: .98rem; top: 0; }
-      .hero-disc { left: 66%; bottom: 150px; }
+    @media (max-width: 1000px) {
+      .hero-stage { grid-template-columns: 1fr; gap: 6px; }
+      .hero-figure-wrap { min-height: 520px; }
+      .hero-figure { width: min(150px, 34%); }
+      .hero-block { left: 6%; right: 6%; height: 92px; }
+      .hero-figure { bottom: 86px; }
+      .hero-side { justify-items: start; width: 100%; }
+      .hero-card { max-width: 46ch; }
+    }
+    @media (max-width: 480px) {
+      .hero-figure-wrap { min-height: 430px; }
+      .hero-figure { width: min(120px, 42%); bottom: 82px; }
+      .hero-block { height: 88px; }
     }
   </style>
 </head>
@@ -63,12 +72,16 @@
       </div>
       <div class="bps-stage hero-stage" data-wires>
         <span class="bps-sphere" style="--size: 140px; left: 0; top: 2%;" aria-hidden="true"></span>
-        <div class="bps-block hero-block" aria-hidden="true"></div>
-        <figure class="bps-figure hero-figure">
-          <img src="img/jordi-sky.png" alt="Jordi Linares-Pellicer as a cut-out, standing relaxed in a navy linen shirt, one hand in his pocket, a white earbud in" width="545" height="1481">
-        </figure>
-        <div class="bps-disc hero-disc" id="ch-telegram" data-wire-to="#hero-card" data-wire-arrow>Telegram</div>
-        <div class="bps-card bps-card--lg hero-card" id="hero-card">Your message came in on Telegram from the talk. The keynote stays at 11:20 and the slides still have to reach the organisers before Monday at nine. Shall I draft the mail that carries them?</div>
+        <div class="hero-figure-wrap">
+          <div class="bps-block hero-block" aria-hidden="true"></div>
+          <figure class="bps-figure hero-figure">
+            <img src="img/jordi-sky.png" alt="Jordi Linares-Pellicer as a cut-out, standing relaxed in a navy linen shirt, one hand in his pocket, a white earbud in" width="545" height="1481">
+          </figure>
+        </div>
+        <div class="hero-side">
+          <div class="bps-disc hero-disc" id="ch-telegram" data-wire-to="#hero-card" data-wire-arrow>Telegram</div>
+          <div class="bps-card bps-card--lg hero-card" id="hero-card">Your message came in on Telegram from the talk. The keynote stays at 11:20 and the slides still have to reach the organisers before Monday at nine. Shall I draft the mail that carries them?</div>
+        </div>
       </div>
     </div>
   </header>
