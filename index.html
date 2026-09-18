@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charlas · Jordi Linares-Pellicer</title>
+<style>
+  :root { --ink:#1b2a4a; --teal:#2f9e8f; --muted:#5b6b85; }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:clamp(24px,6vw,96px) clamp(20px,6vw,96px); background:#fdf6e3; color:var(--ink);
+         font-family:Figtree,Manrope,-apple-system,system-ui,sans-serif; line-height:1.5; }
+  h1 { font-size:clamp(28px,4.5vw,52px); line-height:1.05; margin:0 0 12px; letter-spacing:-.02em; }
+  p.lead { max-width:56ch; color:var(--muted); margin:0 0 40px; }
+  ul { list-style:none; padding:0; margin:0; max-width:72ch; }
+  li { background:#fff; border:1px solid var(--teal); border-radius:16px; padding:18px 20px; margin:0 0 14px; }
+  li a { color:var(--ink); text-decoration:none; font-weight:600; }
+  li a:hover { text-decoration:underline; text-decoration-color:var(--teal); }
+  li span.when { display:block; color:var(--muted); font-size:14px; margin-top:4px; }
+  li.soon { border-style:dashed; color:var(--muted); }
+  footer { margin-top:56px; color:var(--muted); font-size:13px; }
+</style>
+</head>
+<body>
+  <h1>Páginas de charla</h1>
+  <p class="lead">Páginas vivas por conferencia: la ciudad, la agenda del día, el mapa y lo que encaja con mi perfil. Generadas por el agente a partir del contexto del evento. Sin build step: cada charla es una carpeta.</p>
+  <ul id="talks">
+    <li class="soon">Breda · AI in the City — en preparación<span class="when">24 de septiembre de 2026 · Chassé Theater</span></li>
+  </ul>
+  <footer>Jordi Linares-Pellicer · UPV / EPSA Alcoy</footer>
+</body>
+</html>
