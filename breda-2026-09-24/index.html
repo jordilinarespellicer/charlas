@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Breda, Thursday 24 September 2026 · your assistant page</title>
+  <meta name="description" content="A page that assists Jordi Linares in Breda: the day of the AI in the City keynote, the stops on the map, what the city offers that matches his profile, the Dutch he may need and the official services.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="breda.css">
+  <style>
+    .hero-stage { min-height: 580px; }
+    .hero-block { position: absolute; left: 4%; right: 4%; bottom: 0; height: 104px; }
+    .hero-figure { position: absolute; left: 26%; bottom: 98px; transform: translateX(-50%); width: min(190px, 30%); }
+    .hero-card { position: absolute; right: 0; top: 6%; max-width: 27ch; }
+    .hero-disc { position: absolute; left: 54%; bottom: 132px; }
+    .walk-stage { min-height: 560px; margin-top: 26px; }
+    .walk-block { position: absolute; left: 8%; right: 8%; bottom: 0; height: 104px; }
+    .walk-figure { position: absolute; left: 46%; bottom: 98px; transform: translateX(-50%); width: min(152px, 30%); }
+    .panels { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .day-cards { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 26px; }
+    @media (max-width: 860px) {
+      .hero-stage { min-height: 500px; }
+      .hero-figure { left: 22%; width: min(140px, 32%); }
+      .hero-card { right: 0; top: 0; max-width: 19ch; font-size: .98rem; }
+      .hero-disc { left: 62%; bottom: 124px; }
+      .walk-stage { min-height: 470px; }
+      .walk-block { left: 4%; right: 4%; height: 84px; }
+      .walk-figure { left: 40%; bottom: 78px; width: min(118px, 32%); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="bps-nav bps-nav--sticky" data-tone="sky" aria-label="Sections of this page">
+    <a class="bps-wordmark" href="#top">Your assistant in Breda</a>
+    <ul class="bps-navlinks">
+      <li><a href="#day">The day</a></li>
+      <li><a href="#map">The map</a></li>
+      <li><a href="#do">What to do</a></li>
+      <li><a href="#phrases">Dutch</a></li>
+      <li><a href="#services">Services</a></li>
+    </ul>
+    <span class="bps-chip">Thu 24 Sep · 11:20 keynote</span>
+  </nav>
+
+  <!-- HERO: sky -->
+  <header class="bps-section" data-tone="sky" id="top">
+    <span class="bps-sphere bps-sphere--float" style="--size: 250px; right: -70px; bottom: -90px;" aria-hidden="true"></span>
+    <div class="bps-container bps-split">
+      <div>
+        <h1 class="bps-headline">Morning, Jordi.</h1>
+        <p class="bps-standfirst">It is Thursday 24 September in Breda, the day of your international keynote at AI in the City. You are on the main stage of the Chassé Theater at 11:20, in the room at 11:05, with your own laptop and the demo. I read your diary for 22 to 26 September and the congress programme, and I built the day around them.</p>
+        <div class="bps-actions">
+          <a class="bps-btn" href="#day">Show me the day</a>
+          <a class="bps-btn bps-btn--ghost" href="#do">What else is on</a>
+        </div>
+      </div>
+      <div class="bps-stage hero-stage" data-wires>
+        <span class="bps-sphere" style="--size: 130px; left: 2%; top: 4%;" aria-hidden="true"></span>
+        <div class="bps-block hero-block" aria-hidden="true"></div>
+        <figure class="bps-figure hero-figure">
+          <img src="img/jordi-sky.png" alt="Jordi, standing relaxed with one hand in his pocket, a white earbud in his ear" width="576" height="1490">
+        </figure>
+        <div class="bps-disc hero-disc" id="ch-desktop" data-wire-to="#hero-card" data-wire-arrow>Desktop</div>
+        <div class="bps-card bps-card--lg hero-card" id="hero-card">You told me at 19:38 that you are in Breda for the talk. Shall I keep this page open on your phone for the walk between sessions?</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- THE DAY: mint -->
+  <section class="bps-section" data-tone="mint" id="day" data-day="2026-09-24">
+    <span class="bps-sphere" style="--size: 170px; left: -55px; top: 26%;" aria-hidden="true"></span>
+    <div class="bps-container bps-reveal">
+      <h2 class="bps-headline-2">The day, in order.</h2>
+      <p class="bps-standfirst">Your calendar for 24 September and the official congress programme, merged. The teal dots are the ones that cannot slip.</p>
+
+      <ul class="bps-timeline">
+        <li data-from="10:00">
+          <span class="bps-when">10:00</span>
+          <span class="bps-rule" aria-hidden="true"></span>
+          <div class="bps-card">Reception and welcome on the main stage, Kon. Drukkerij Em. de Jongzaal. The alderman opens the day at 10:10. Nothing of yours before 11:05, so this is the hour to be seen in the foyer.</div>
+        </li>
+        <li data-from="11:05" data-kind="must">
+          <span class="bps-when">11:05</span>
+          <span class="bps-rule" aria-hidden="true"></span>
+          <div class="bps-card">In the room, fifteen minutes before you speak. Pick up your accreditation at the Chassé and say you are a speaker. Find the clicker, test the HDMI adapter on the stage laptop and open the demo once, so the first slide is warm.</div>
+        </li>
+        <li data-from="11:20" data-kind="must">
+          <span class="bps-when">11:20</span>
+          <span class="bps-rule" aria-hidden="true"></span>
+          <div class="bps-card">Your international keynote. Twenty-five minutes in English, main stage, on "Design the city as an organism: from smart infrastructure to agent-driven urban life". Highly visual, almost no text, live demo from your own laptop.</div>
+        </li>
+        <li data-from="12:00">
+          <span class="bps-when">12:00</span>
+          <span class="bps-rule" aria-hidden="true"></span>
+          <div class="bps-card">Pitches and demos run in parallel until 14:30. Social pitches in Pitch Cinema, economic pitches in De Verdieping, the spatial and autonomous sets from 13:45. The two demo rooms, Trapfoyer and Boartefoyer, repeat at 12:00 and 13:45.</div>
+        </li>
+        <li data-from="18:00">
+          <span class="bps-when">18:00</span>
+          <span class="bps-rule" aria-hidden="true"></span>
+          <div class="bps-card">Closing in the Trapfoyer. After that the evening is yours, and the light in the city is still good for a walk.</div>
+        </li>
+      </ul>
+
+      <div class="bps-chips" style="margin-top: 30px;">
+        <span class="bps-chip bps-chip--must">Accreditation at the Chassé</span>
+        <span class="bps-chip bps-chip--must">Your own laptop</span>
+        <span class="bps-chip bps-chip--must">USB-C to HDMI adapter</span>
+        <span class="bps-chip bps-chip--must">Clicker</span>
+        <span class="bps-chip bps-chip--must">Slides already with the organisers</span>
+      </div>
+
+      <div class="day-cards">
+        <article class="bps-card bps-card--panel">
+          <span class="bps-label bps-muted">Also in your Breda diary</span>
+          <h3>Wednesday, Ecosystem Day</h3>
+          <p>13:00 to 18:00 at Hotel Nassau, workshop on sovereignty. You open the debate with a short introduction before the international experts, then the room works back from 2036 to the recommendations. The full Day 1 programme is a PDF in the services list below.</p>
+        </article>
+        <article class="bps-card bps-card--panel">
+          <span class="bps-label bps-muted">Not yours to carry</span>
+          <h3>The DETECT 2.0 consortium meeting</h3>
+          <p>Your diary says the partner meeting at Avans on 22 and 23 September is covered by a colleague. I have left it off the timeline for that reason. Say the word and I will put it back with the room and the hour.</p>
+        </article>
+        <article class="bps-card bps-card--panel">
+          <span class="bps-label bps-muted">Where I did not look</span>
+          <h3>Your mail and your music</h3>
+          <p>I did not open your mailbox, so there is no draft waiting for you here. I did not touch Spotify either. What I did read is listed at the bottom of the page, with the hour of the reading.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE MAP: blush -->
+  <section class="bps-section" data-tone="blush" id="map">
+    <div class="bps-container bps-reveal">
+      <h2 class="bps-headline-2">Breda, seven stops.</h2>
+      <p class="bps-standfirst">The venue, the Day 1 hotel, the church, the market, the water gate, the park and the station. Everything is inside a kilometre and a half of your stage, which is why this city works on foot.</p>
+      <div id="breda-map" class="bps-map" role="img" aria-label="Map of central Breda with the congress venue and the stops of the day"></div>
+      <div class="bps-map-legend">
+        <span class="bps-chip">🎤 Chassé Theater</span>
+        <span class="bps-chip">🏨 Hotel Nassau</span>
+        <span class="bps-chip">⛪ Grote Kerk</span>
+        <span class="bps-chip">🏛 Grote Markt</span>
+        <span class="bps-chip">🌉 Spanjaardsgat</span>
+        <span class="bps-chip">🌳 Valkenberg</span>
+        <span class="bps-chip">🚉 Station Breda</span>
+      </div>
+
+      <div class="bps-stage walk-stage" data-wires>
+        <span class="bps-sphere" style="--size: 120px; left: 3%; top: 2%;" aria-hidden="true"></span>
+        <div class="bps-block walk-block" aria-hidden="true"></div>
+        <figure class="bps-figure walk-figure">
+          <img src="img/jordi-blush.png" alt="Jordi walking through the city, glancing at his phone" width="576" height="1490">
+        </figure>
+        <div class="bps-card" style="position:absolute; right:0; top:6%; max-width: 27ch;">The walk I would take after the closing: Chassé to the Grote Markt is 424 m, on to the Grote Kerk 508 m from the venue, then the Spanjaardsgat and back through the Valkenberg. Shall I turn it into a route on your phone for Thursday evening?</div>
+      </div>
+
+      <div class="bps-rows" style="margin-top: 30px;">
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.58747,4.78218" target="_blank" rel="noopener">Chassé Theater, Claudius Prinsenlaan 8 <span class="bps-muted">your stage, 51.58747, 4.78218</span></a>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.59223,4.78903" target="_blank" rel="noopener">Hotel Nassau, Nassausingel <span class="bps-muted">Day 1 venue, 710 m from the Chassé</span></a>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.58906,4.77529" target="_blank" rel="noopener">Grote Kerk, Kerkplein 2 <span class="bps-muted">the Vierdag organ, 508 m from the venue</span></a>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.58842,4.77624" target="_blank" rel="noopener">Grote Markt <span class="bps-muted">the square, 424 m from the venue</span></a>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.59084,4.77336" target="_blank" rel="noopener">Spanjaardsgat <span class="bps-muted">the water gate, on the way to the park</span></a>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.59132,4.77911" target="_blank" rel="noopener">Valkenberg <span class="bps-muted">the city park, 478 m from the venue</span></a>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=51.59514,4.78002" target="_blank" rel="noopener">Station Breda <span class="bps-muted">866 m from the venue, trains to Rotterdam and Amsterdam</span></a>
+      </div>
+      <p class="bps-muted" style="margin-top: 14px; font-size: .88rem;">The dashed line joins the stops in the order I would walk them. The distances are straight line, measured from the coordinates above, so the streets add a little.</p>
+    </div>
+  </section>
+
+  <!-- WHAT TO DO: butter -->
+  <section class="bps-section" data-tone="butter" id="do">
+    <span class="bps-sphere bps-sphere--float" style="--size: 200px; right: -60px; top: -50px;" aria-hidden="true"></span>
+    <div class="bps-container bps-reveal">
+      <h2 class="bps-headline-2">What the city offers you.</h2>
+      <p class="bps-standfirst">Four things I matched to you, each with the reason. No generic top ten, and every one of them is a link you can check.</p>
+
+      <div class="bps-carousel">
+        <figure class="bps-photo">
+          <img src="img/chasse-theater.jpg" alt="The front of the Chassé Theater in Breda">
+          <figcaption>Chassé Theater, your venue. Photo by G.Lanting, CC BY 4.0, via Wikimedia Commons.</figcaption>
+        </figure>
+        <figure class="bps-photo">
+          <img src="img/grote-kerk.jpg" alt="The tower of the Grote Kerk in Breda">
+          <figcaption>The tower of the Grote Kerk. Photo by Michielverbeek, CC BY-SA 4.0, via Wikimedia Commons.</figcaption>
+        </figure>
+        <figure class="bps-photo">
+          <img src="img/spanjaardsgat.jpg" alt="The Spanjaardsgat water gate in Breda">
+          <figcaption>The Spanjaardsgat. Photo by Renée Kools, CC BY 4.0, via Wikimedia Commons.</figcaption>
+        </figure>
+        <figure class="bps-photo">
+          <img src="img/valkenberg.jpg" alt="Panorama of the Valkenberg park in Breda">
+          <figcaption>Valkenberg park. Photo by acediscovery, CC BY 4.0, via Wikimedia Commons.</figcaption>
+        </figure>
+        <figure class="bps-photo">
+          <img src="img/mural.jpg" alt="A large mural on a wall in the Stallingstraat in Breda">
+          <figcaption>A mural in the Stallingstraat, part of the city's painted walls. Photo by FaceMePLS, CC BY 2.0, via Wikimedia Commons.</figcaption>
+        </figure>
+        <figure class="bps-photo">
+          <img src="img/grote-markt.jpg" alt="View over the Grote Markt in Breda">
+          <figcaption>The Grote Markt from the Sint Janstraat. Photo by Renée Kools, CC BY 4.0, via Wikimedia Commons.</figcaption>
+        </figure>
+      </div>
+
+      <div class="panels" style="margin-top: 34px;">
+        <article class="bps-panel">
+          <span class="bps-label bps-muted">Image · 400 m from your stage</span>
+          <h3>BredaPhoto Festival 2026</h3>
+          <p>Twelfth edition, 11 September to 25 October, more than forty photographers in churches, parks and a former women's prison. The festival hub is Carré Chassé, which is the building you are speaking in.</p>
+          <p>It matches you because photography and image are half of your work, and because you will be standing inside the hub anyway. The city agenda lists 10:00 to 17:00 daily. The outdoor work in the Koepeldistrict and at XXL Square is the part you can walk past without a ticket.</p>
+          <p><a href="https://bredaphoto.nl/" target="_blank" rel="noopener">bredaphoto.nl</a></p>
+        </article>
+        <article class="bps-panel">
+          <span class="bps-label bps-muted">Street art · a walk</span>
+          <h3>Blind Walls Gallery</h3>
+          <p>The painted walls of Breda, spread over the city centre as an open air gallery, with a guided walking tour listed by the city's visitor platform.</p>
+          <p>It matches you because murals are image and storytelling at the scale of a street, and because the way to see them is to walk. One hour, no booking, no bench.</p>
+          <p><a href="https://blindwalls.gallery/en/" target="_blank" rel="noopener">blindwalls.gallery</a> · <a href="https://www.explorebreda.com/en/events" target="_blank" rel="noopener">the tour dates</a></p>
+        </article>
+        <article class="bps-panel">
+          <span class="bps-label bps-muted">Music · 508 m from the venue</span>
+          <h3>The Grote Kerk and its organ</h3>
+          <p>A fourteenth century church with the Vierdag organ inside and a concert series, BACH &amp; CO, built around it. The series runs on Sundays in July and August, so it is not on during your week, and I am not going to pretend otherwise.</p>
+          <p>It still matches you: organ and sacred music sit next to Pärt in your listening, and the building is worth the ten minute walk on its own.</p>
+          <p><a href="https://www.grotekerkbreda.nl/en/" target="_blank" rel="noopener">grotekerkbreda.nl</a></p>
+        </article>
+        <article class="bps-panel">
+          <span class="bps-label bps-muted">Film score · check before you buy</span>
+          <h3>A film score concert in the church</h3>
+          <p>A listing from the concert organiser puts a Lord of the Rings programme, played by the Mystery Ensemble, in the Grote Kerk on Friday 25 September at 20:00. It appears on the organiser's page, not on the church's own agenda, so treat it as unconfirmed until you check the organiser's site.</p>
+          <p>If you stay the Friday night, it matches the film score row in your profile, and a church acoustic after dark is a good end to the week.</p>
+          <p><a href="https://redevents.world/event/849-the-music-of-the-lord-of-the-rings-tribute-to-howard-shore-by-mystery-ensemble.html" target="_blank" rel="noopener">the organiser's listing</a></p>
+        </article>
+      </div>
+      <p class="bps-muted" style="margin-top: 22px; font-size: .9rem;">There is also Chassé Cinema in the same building as your stage, an art house with its own programme, which is the obvious way to spend the hour between the pitches. The day's screenings are on <a href="https://www.chasse.nl/" target="_blank" rel="noopener">chasse.nl</a>. I did not read the programme, so I am not naming a film.</p>
+    </div>
+  </section>
+
+  <!-- PHRASES: lavender -->
+  <section class="bps-section" data-tone="lavender" id="phrases">
+    <div class="bps-container bps-reveal">
+      <h2 class="bps-headline-2">Say it in Dutch.</h2>
+      <p class="bps-standfirst">Eight phrases for your day, in the order you will need them. The italic line is how it sounds, roughly.</p>
+      <div class="bps-phrases">
+        <div class="bps-phrase"><strong>Goedemorgen.</strong><em>khud-er-mor-khuh</em> Good morning.</div>
+        <div class="bps-phrase"><strong>Mag ik een koffie, alstublieft?</strong><em>makh ik un kof-fee, als-tuu-bleeft</em> Could I have a coffee, please?</div>
+        <div class="bps-phrase"><strong>Ik ben spreker op het congres.</strong><em>ik ben sprai-ker op hut kon-gres</em> I am a speaker at the conference.</div>
+        <div class="bps-phrase"><strong>Waar is het Chassé Theater?</strong><em>vaar is hut shas-say tay-aa-ter</em> Where is the Chassé Theater?</div>
+        <div class="bps-phrase"><strong>Mag ik met pin betalen?</strong><em>makh ik met pin buh-taa-len</em> Can I pay by card?</div>
+        <div class="bps-phrase"><strong>Sorry, ik spreek geen Nederlands.</strong><em>sor-ree, ik spraik khain nay-der-lants</em> Sorry, I do not speak Dutch.</div>
+        <div class="bps-phrase"><strong>Ik ben verdwaald, kunt u mij helpen?</strong><em>ik ben ver-dvaalt, kynt u may hel-pen</em> I am lost, could you help me?</div>
+        <div class="bps-phrase"><strong>Dank u wel.</strong><em>dank u vel</em> Thank you.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES: sky -->
+  <section class="bps-section" data-tone="sky" id="services">
+    <div class="bps-container bps-reveal">
+      <h2 class="bps-headline-2">Practical, official, checkable.</h2>
+      <p class="bps-standfirst">The event, the city and the transport, all from the source. Every link was opened while I built this page.</p>
+      <div class="bps-rows">
+        <a href="https://indestad.ai/en/" target="_blank" rel="noopener">AI in the City 2026, official programme <span class="bps-muted">days, rooms and sessions</span></a>
+        <a href="https://inthecitycloudstorage.blob.core.windows.net/media/documents/speakersbriefingaiinthecity.pdf" target="_blank" rel="noopener">Speaker briefing, PDF <span class="bps-muted">the organiser's logistics</span></a>
+        <a href="https://inthecitycloudstorage.blob.core.windows.net/media/documents/23septEN.pdf" target="_blank" rel="noopener">Ecosystem Day programme, PDF <span class="bps-muted">your Wednesday workshops</span></a>
+        <a href="https://www.explorebreda.com/en/events" target="_blank" rel="noopener">Explore Breda, the city's events calendar <span class="bps-muted">what is on, day by day</span></a>
+        <a href="https://www.breda.nl/" target="_blank" rel="noopener">Gemeente Breda <span class="bps-muted">the municipality</span></a>
+        <a href="https://9292.nl/" target="_blank" rel="noopener">9292 <span class="bps-muted">bus, tram and train door to door</span></a>
+        <a href="https://www.ns.nl/en" target="_blank" rel="noopener">NS, Dutch railways <span class="bps-muted">tickets and times from Breda station</span></a>
+        <a href="https://www.chasse.nl/" target="_blank" rel="noopener">Chassé Theater and Cinema <span class="bps-muted">your venue, and the art house next door</span></a>
+        <a href="https://bredaphoto.nl/" target="_blank" rel="noopener">BredaPhoto Festival <span class="bps-muted">tickets, locations and opening hours</span></a>
+        <a href="https://www.grotekerkbreda.nl/en/" target="_blank" rel="noopener">Grote Kerk Breda <span class="bps-muted">agenda, tower and organ concerts</span></a>
+      </div>
+
+      <div class="panels" style="margin-top: 34px;">
+        <article class="bps-panel">
+          <span class="bps-label bps-muted">Honesty</span>
+          <h3>What I read, and what I did not</h3>
+          <p>I read your Google Calendar for 22 to 26 September, the official congress programme, the BredaPhoto and Grote Kerk pages, the city's event calendar, OpenStreetMap for the coordinates and the photographs on Wikimedia Commons.</p>
+          <p>I did not read your mailbox, so there is no draft here. I did not read your Spotify. Your Reminders lists hold six loose items, all overdue, none of them about Breda, and I left them alone.</p>
+        </article>
+        <article class="bps-panel">
+          <span class="bps-label bps-muted">Timestamp</span>
+          <h3>Read on 18 September 2026, 19:38 CEST</h3>
+          <p>That is the hour this page was built, in Alcoy, from the diary and the sources above. The day, the rooms and the programme are the ones published for 24 September 2026, and they are the organiser's to change.</p>
+          <p>If anything here is wrong, tell me and I will rebuild the page. Nothing on this page has been sent anywhere or booked for you.</p>
+        </article>
+        <article class="bps-panel">
+          <span class="bps-label bps-muted">One thing to decide</span>
+          <h3>The evening of the 24th</h3>
+          <p>After the closing at 18:00 the light is still good and the whole centre is under a kilometre. Shall I keep the walk to the Spanjaardsgat and the park ready on your phone, or do you want the two art house screenings of the day first?</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bps-footer bps-dotgrid">
+    <div class="bps-mosaic" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <p style="margin:0;">Jordi Linares-Pellicer · VRAIN, Universitat Politècnica de València</p>
+    <p style="margin:0;" class="bps-muted">jlinares@dsic.upv.es · LinkedIn: add your handle here</p>
+    <p style="margin:12px 0 0;" class="bps-muted">Page built by your agent on 18 September 2026 at 19:38 CEST for the talk in Breda on 24 September 2026.</p>
+    <p style="margin:6px 0 0;" class="bps-muted">Photographs: Chassé Theater by G.Lanting (CC BY 4.0), tower of the Grote Kerk by Michielverbeek (CC BY-SA 4.0), Spanjaardsgat and Grote Markt by Renée Kools (CC BY 4.0), Valkenberg park by acediscovery (CC BY 4.0), mural in the Stallingstraat by FaceMePLS (CC BY 2.0), all via Wikimedia Commons. The two figures of Jordi are generated images, not photographs.</p>
+    <p style="margin:6px 0 0;" class="bps-muted">Map data © OpenStreetMap contributors. Tiles by OpenStreetMap, map library Leaflet.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    (function () {
+      var el = document.getElementById('breda-map');
+      if (!el || typeof L === 'undefined') return;
+      var stops = [
+        { lat: 51.58747, lon: 4.78218, icon: '🎤', label: 'Chassé Theater, your stage' },
+        { lat: 51.58842, lon: 4.77624, icon: '🏛', label: 'Grote Markt' },
+        { lat: 51.58906, lon: 4.77529, icon: '⛪', label: 'Grote Kerk' },
+        { lat: 51.59084, lon: 4.77336, icon: '🌉', label: 'Spanjaardsgat' },
+        { lat: 51.59132, lon: 4.77911, icon: '🌳', label: 'Valkenberg' },
+        { lat: 51.59514, lon: 4.78002, icon: '🚉', label: 'Station Breda' },
+        { lat: 51.59223, lon: 4.78903, icon: '🏨', label: 'Hotel Nassau, Day 1' }
+      ];
+      var map = L.map(el, { scrollWheelZoom: false, zoomControl: true }).setView([51.5893, 4.7800], 15);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+      stops.forEach(function (s) {
+        L.marker([s.lat, s.lon], {
+          icon: L.divIcon({ className: 'bps-leaflet-marker', html: '<span class="bps-pin">' + s.icon + '</span>', iconSize: [24, 24], iconAnchor: [12, 12] })
+        }).addTo(map).bindPopup(s.label);
+      });
+      L.polyline([[51.58747, 4.78218], [51.58842, 4.77624], [51.58906, 4.77529], [51.59084, 4.77336], [51.59132, 4.77911]], {
+        color: '#2f9e8f', weight: 2, dashArray: '6 6', opacity: .9
+      }).addTo(map);
+      var group = L.featureGroup(stops.map(function (s) { return L.marker([s.lat, s.lon]); }));
+      map.fitBounds(group.getBounds().pad(0.06), { maxZoom: 16 });
+      setTimeout(function () { map.invalidateSize(); }, 300);
+    })();
+  </script>
+  <script src="wires.js"></script>
+  <script src="live.js"></script>
+</body>
+</html>
