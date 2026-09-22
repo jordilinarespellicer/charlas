@@ -1,0 +1,65 @@
+{
+  "chasse-theater": {
+    "title": "File:Breda, het Chassé theater foto2 2014-12-28 11.58.jpg",
+    "author": "MichielverbeekNL",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Breda, theater het Chassé theater",
+    "source": "https://commons.wikimedia.org/wiki/File%3ABreda%2C_het_Chass%C3%A9_theater_foto2_2014-12-28_11.58.jpg",
+    "bytes": 519206
+  },
+  "grote-markt": {
+    "title": "File:Breda Sint Janstraat zicht op de Grote Markt 2024-09-20.jpg",
+    "author": "Renée Kools",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "description": "St. Janstraat with a view of the Grote Markt, Breda",
+    "source": "https://commons.wikimedia.org/wiki/File%3ABreda_Sint_Janstraat_zicht_op_de_Grote_Markt_2024-09-20.jpg",
+    "bytes": 1028532
+  },
+  "grote-kerk": {
+    "title": "File:Toren exterieur - Breda - 20040397 - RCE.jpg",
+    "author": "Loek Tangel",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Onze Lieve Vrouwe Kerk: toren exterieur",
+    "source": "https://commons.wikimedia.org/wiki/File%3AToren_exterieur_-_Breda_-_20040397_-_RCE.jpg",
+    "bytes": 1150471
+  },
+  "spanjaardsgat": {
+    "title": "File:Breda Spanjaardsgat 2024-08-05.jpg",
+    "author": "Renée Kools",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "description": "Spanjaardsgat, Breda",
+    "source": "https://commons.wikimedia.org/wiki/File%3ABreda_Spanjaardsgat_2024-08-05.jpg",
+    "bytes": 632751
+  },
+  "valkenberg": {
+    "title": "File:Valkenberg Park Breda.jpg",
+    "author": "acediscovery",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "description": "Panorama view of Valkenberg Park in Breda, the Netherlands",
+    "source": "https://commons.wikimedia.org/wiki/File%3AValkenberg_Park_Breda.jpg",
+    "bytes": 1269209
+  },
+  "station": {
+    "title": "File:Station Breda 2021.jpg",
+    "author": "Smiley.toerist",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Stoptrein naar Dordrecht in Breda",
+    "source": "https://commons.wikimedia.org/wiki/File%3AStation_Breda_2021.jpg",
+    "bytes": 735677
+  },
+  "mural": {
+    "title": "File:Hedof - Blind Walls Epic Stories.png",
+    "author": "Renée Kools",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Mural in Breda by Hedof (alias of Rick Berkelmans) titled \"Blind Walls Epic Stories\", a mural depicting the various ways you can bring a story to life; via speech, text, dreaming, music, etc.",
+    "source": "https://commons.wikimedia.org/wiki/File%3AHedof_-_Blind_Walls_Epic_Stories.png",
+    "bytes": 2128901
+  }
+}

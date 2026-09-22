@@ -1,0 +1,418 @@
+/* ==========================================================================
+   Breda Pastel Studio — design tokens, base styles and components (v1.0.0)
+   One flat pastel sweep per section, ink-navy type, teal only on wires,
+   card borders and focus rings. Props (tiles, discs, blocks, spheres) are
+   matte set pieces one shade deeper than the section they stand on.
+   Usage: <section class="bps-section" data-tone="mint"> ... </section>
+   ========================================================================== */
+
+:root {
+  /* Backdrops (the five studio sweeps) */
+  --bps-butter: #FFECB7;
+  --bps-mint: #CAE7E5;
+  --bps-blush: #F9D2E5;
+  --bps-lavender: #CFC7F6;
+  --bps-sky: #A3CCEC;
+  --bps-white: #FFFFFF;
+
+  /* Ink and accent */
+  --bps-navy: #0E2841;
+  --bps-navy-72: rgba(14, 40, 65, 0.72);
+  --bps-navy-12: rgba(14, 40, 65, 0.12);
+  --bps-teal: #2FA593;
+  --bps-teal-soft: #A0D8D0;
+  --bps-teal-pale: #C8E8E8;
+  --bps-teal-mid: #38B0A0;
+
+  /* Warm exceptions: at most one of them, once per page, on a single object */
+  --bps-sun: #FEE101;
+  --bps-orange: #F36E21;
+
+  /* Type */
+  --bps-font: "Figtree", "Manrope", "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bps-h1: clamp(2.4rem, 1.2rem + 4.2vw, 4.6rem);
+  --bps-h2: clamp(2rem, 1rem + 3vw, 3.4rem);
+  --bps-standfirst: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  --bps-body: 1.0625rem;
+  --bps-label: 0.78rem;
+
+  /* Rhythm */
+  --bps-gutter: clamp(20px, 8vw, 120px);
+  --bps-section-y: clamp(64px, 10vw, 140px);
+  --bps-container: 1240px;
+  --bps-radius-card: 18px;
+  --bps-radius-tile: 14px;
+  --bps-radius-pill: 999px;
+
+  /* Only contact shadows. Never glow, never text shadow. */
+  --bps-shadow-contact: 0 26px 30px -26px rgba(14, 40, 65, 0.55);
+  --bps-shadow-card: 0 14px 34px -24px rgba(14, 40, 65, 0.35);
+
+  color-scheme: light only;
+}
+
+/* Section tones: --bg is the sweep, --prop one shade deeper, --deep the shaded side of props */
+.bps-section,
+[data-tone] {
+  --bg: var(--bps-butter);
+  --prop: #F8DE9A;
+  --deep: #E9C86E;
+}
+[data-tone="butter"]   { --bg: var(--bps-butter);   --prop: #F8DE9A; --deep: #E9C86E; }
+[data-tone="mint"]     { --bg: var(--bps-mint);     --prop: #ADDCD8; --deep: #8FCBC6; }
+[data-tone="blush"]    { --bg: var(--bps-blush);    --prop: #F3B9D4; --deep: #E99CBF; }
+[data-tone="lavender"] { --bg: var(--bps-lavender); --prop: #BBB0F0; --deep: #A292E8; }
+[data-tone="sky"]      { --bg: var(--bps-sky);      --prop: #8ABDE6; --deep: #6FA9DB; }
+[data-tone="white"]    { --bg: var(--bps-white);    --prop: #EEF3F6; --deep: #D9E2E8; }
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--bps-font);
+  font-size: var(--bps-body);
+  line-height: 1.55;
+  color: var(--bps-navy);
+  background: var(--bps-white);
+  font-feature-settings: "kern" 1, "liga" 1;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg, video { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration-color: var(--bps-teal); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 3px; }
+:focus-visible { outline: 2px solid var(--bps-teal); outline-offset: 3px; border-radius: 6px; }
+p { margin: 0 0 1em; }
+::selection { background: var(--bps-teal-pale); color: var(--bps-navy); }
+
+/* --------------------------------------------------------------------------
+   Sections and layout
+   -------------------------------------------------------------------------- */
+.bps-section {
+  position: relative;
+  overflow: hidden;              /* spheres may bleed off the edge */
+  background: var(--bg);         /* flat. never a gradient */
+  color: var(--bps-navy);
+  padding: var(--bps-section-y) var(--bps-gutter);
+  isolation: isolate;
+  scroll-margin-top: 76px;       /* anchors must not land under the sticky nav */
+}
+@media (max-width: 480px) {
+  .bps-nav { padding: 12px var(--bps-gutter); }
+  .bps-nav .bps-wordmark { font-size: 1rem; }
+  .bps-nav .bps-chip { font-size: .62rem; padding: 6px 10px; letter-spacing: .08em; }
+}
+.bps-container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--bps-container);
+  margin: 0 auto;
+}
+/* Text on the clean third, visuals on the other two thirds (desktop) */
+.bps-split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+}
+.bps-split.bps-split--reverse > :first-child { order: 2; }
+.bps-split.bps-split--reverse > :last-child { order: 1; }
+@media (max-width: 860px) {
+  .bps-split { grid-template-columns: minmax(0, 1fr); }
+  .bps-split.bps-split--reverse > :first-child,
+  .bps-split.bps-split--reverse > :last-child { order: initial; }
+}
+.bps-stage {                      /* where cut-outs, props and wires live */
+  position: relative;
+  min-height: 320px;
+}
+
+/* --------------------------------------------------------------------------
+   Type: headline, standfirst, label. Three levels and nothing else.
+   -------------------------------------------------------------------------- */
+.bps-headline, .bps-headline-2 {
+  font-weight: 800;
+  letter-spacing: -0.022em;
+  line-height: 1.02;
+  margin: 0 0 0.45em;
+  max-width: 14ch;                 /* two lines at most: shorten the words, not the size */
+  text-wrap: balance;
+}
+.bps-headline { font-size: var(--bps-h1); }
+.bps-headline-2 { font-size: var(--bps-h2); }
+.bps-standfirst {
+  font-size: var(--bps-standfirst);
+  font-weight: 400;
+  line-height: 1.35;
+  max-width: 42ch;
+  margin: 0 0 1.4em;
+  text-wrap: pretty;
+}
+.bps-label {
+  font-size: var(--bps-label);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.25;
+}
+.bps-muted { color: var(--bps-navy-72); }
+.bps-prose { max-width: 62ch; }
+
+/* --------------------------------------------------------------------------
+   Buttons: navy pill (primary), white pill with teal border (secondary).
+   Teal is never a fill.
+   -------------------------------------------------------------------------- */
+.bps-btn {
+  display: inline-flex; align-items: center; gap: 0.5em;
+  padding: 0.85em 1.5em;
+  border-radius: var(--bps-radius-pill);
+  font-weight: 700; font-size: 1rem; line-height: 1;
+  text-decoration: none; cursor: pointer;
+  border: 2px solid var(--bps-navy);
+  background: var(--bps-navy); color: #fff;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.bps-btn:hover { transform: translateY(-1px); box-shadow: var(--bps-shadow-card); }
+.bps-btn--secondary { background: #fff; color: var(--bps-navy); border-color: var(--bps-teal); }
+.bps-btn--ghost { background: transparent; color: var(--bps-navy); border-color: var(--bps-navy); }
+.bps-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* --------------------------------------------------------------------------
+   Concept devices: tiles, discs, blocks, cards, wires, spheres, figures
+   -------------------------------------------------------------------------- */
+/* Tile: a thick matte slab standing on the floor, label in tracked caps */
+.bps-tile {
+  display: inline-flex; align-items: center; justify-content: center; text-align: center;
+  min-height: 72px; padding: 18px 26px;
+  border-radius: var(--bps-radius-tile);
+  background: var(--prop);
+  color: var(--bps-navy);
+  box-shadow: 0 6px 0 0 var(--deep), var(--bps-shadow-contact);  /* the slab's thickness, then its contact shadow */
+  font-size: var(--bps-label); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.3;
+}
+.bps-tile--tall { min-height: 120px; padding: 26px 30px; font-size: 0.88rem; }
+.bps-tiles { display: flex; flex-wrap: wrap; gap: 18px 22px; align-items: flex-end; }
+
+/* Disc: a matte circle with a short label (and an optional line icon above it) */
+.bps-disc {
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  width: clamp(92px, 24vw, 128px); aspect-ratio: 1; border-radius: 50%;
+  background: var(--prop);
+  box-shadow: inset -8px -10px 0 0 var(--deep), var(--bps-shadow-contact);
+  color: var(--bps-navy); padding: 14px;
+  font-size: var(--bps-label); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.25;
+}
+.bps-disc--lg { width: clamp(120px, 30vw, 168px); font-size: 0.86rem; }
+.bps-disc svg { width: 28px; height: 28px; margin-bottom: 8px; stroke: var(--bps-navy); fill: none; stroke-width: 2; }
+.bps-discs { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; }
+
+/* Block: a low matte plinth (a seat for a figure or a base for a tile) */
+.bps-block {
+  border-radius: 12px;
+  background: var(--prop);
+  box-shadow: 0 10px 0 0 var(--deep), var(--bps-shadow-contact);
+  min-height: 90px;
+}
+
+/* Card: white, rounded, thin teal border, a short navy message. The "voice" of the agent. */
+.bps-card {
+  display: inline-block;
+  background: #fff; color: var(--bps-navy);
+  border: 1.5px solid var(--bps-teal);
+  border-radius: var(--bps-radius-card);
+  padding: 16px 20px;
+  font-weight: 600; line-height: 1.35; font-size: 1.05rem;
+  box-shadow: var(--bps-shadow-card);
+  width: fit-content;
+  max-width: 34ch;
+}
+.bps-card--lg { font-size: 1.25rem; padding: 22px 26px; }
+.bps-card--panel { display: block; width: auto; max-width: none; font-weight: 400; padding: 26px 28px; }
+.bps-card--panel h3 { margin: 0 0 0.35em; font-size: 1.15rem; font-weight: 800; letter-spacing: -0.01em; }
+.bps-card--panel p:last-child { margin-bottom: 0; }
+.bps-cards { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+/* Wires: thin teal lines bent like wire sculptures. Drawn by wires.js into this overlay. */
+.bps-wires {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; overflow: visible; z-index: 2;
+}
+.bps-wires path {
+  fill: none; stroke: var(--bps-teal); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+.bps-wires .bps-wire-head { fill: var(--bps-teal); stroke: none; }
+
+/* Sphere: the recurring motif. Matte, one shade deeper, shaded on one side. Decorative only. */
+.bps-sphere {
+  position: absolute; z-index: 0; pointer-events: none;
+  width: var(--size, 220px); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 36% 32%, var(--bg) -20%, var(--prop) 46%, var(--deep) 100%);
+  box-shadow: var(--bps-shadow-contact);
+}
+.bps-sphere--float { animation: bps-float 9s ease-in-out infinite; }
+@keyframes bps-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@media (prefers-reduced-motion: reduce) { .bps-sphere--float { animation: none; } }
+
+/* Figure: a cut-out person or object (PNG with alpha) with a contact shadow on the floor */
+.bps-figure {
+  position: relative; display: inline-block; z-index: 1; margin: 0;   /* <figure> has UA margins: reset them */
+}
+.bps-figure img { position: relative; z-index: 1; width: 100%; height: auto; }
+.bps-figure::after {
+  content: ""; position: absolute; left: 18%; right: 18%; bottom: -4px; height: 22px;
+  border-radius: 50%; z-index: 0;
+  background: radial-gradient(ellipse at center, rgba(14, 40, 65, 0.30), rgba(14, 40, 65, 0) 68%);
+  filter: blur(5px);
+}
+.bps-figure--seated::after { bottom: 6px; }
+
+/* --------------------------------------------------------------------------
+   Furniture: nav, white dot-grid panel, event mosaic, footer
+   -------------------------------------------------------------------------- */
+.bps-nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  padding: 18px var(--bps-gutter);
+  background: var(--bg, #fff);
+}
+.bps-nav a { text-decoration: none; font-weight: 600; }
+.bps-nav .bps-wordmark { font-weight: 800; letter-spacing: -0.02em; font-size: 1.15rem; }
+.bps-nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+@media (max-width: 720px) { .bps-nav ul { display: none; } }
+
+.bps-dotgrid {
+  background-color: #fff;
+  background-image: radial-gradient(#D9E2E8 1.3px, transparent 1.4px);
+  background-size: 22px 22px;
+}
+.bps-mosaic { display: grid; grid-template-columns: repeat(3, 14px); gap: 4px; }
+.bps-mosaic i { display: block; width: 14px; height: 14px; }
+.bps-mosaic i:nth-child(1) { background: var(--bps-teal); }
+.bps-mosaic i:nth-child(2) { background: var(--bps-teal-mid); }
+.bps-mosaic i:nth-child(3) { background: var(--bps-teal-pale); }
+.bps-mosaic i:nth-child(4) { background: var(--bps-teal-soft); }
+.bps-mosaic i:nth-child(5) { background: transparent; }
+.bps-mosaic i:nth-child(6) { background: var(--bps-teal-pale); }
+
+.bps-footer {
+  padding: 40px var(--bps-gutter);
+  display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between;
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   Utilities
+   -------------------------------------------------------------------------- */
+.bps-stack > * + * { margin-top: var(--gap, 18px); }
+.bps-center { text-align: center; }
+.bps-center .bps-headline, .bps-center .bps-headline-2, .bps-center .bps-standfirst { margin-left: auto; margin-right: auto; }
+.bps-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* --------------------------------------------------------------------------
+   Live-assistant components (v1.1.0): sticky nav, timeline, carousels,
+   photo plates, map frame, phrase rows, reveal. All flat, contact-shadows only.
+   -------------------------------------------------------------------------- */
+.bps-nav--sticky { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid var(--bps-navy-12); }
+.bps-nav .bps-navlinks a[aria-current="true"] { text-decoration: underline; }
+
+/* Rail: the hour-by-hour day. One li per block; the time chip sits on the rule. */
+.bps-timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.bps-timeline li {
+  display: grid; grid-template-columns: 108px 1px minmax(0, 1fr);
+  gap: 0 18px; align-items: start;
+}
+.bps-timeline .bps-when {
+  font-size: var(--bps-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  padding-top: 14px; color: var(--bps-navy);
+}
+.bps-timeline .bps-rule { position: relative; align-self: stretch; background: var(--bps-navy-12); width: 1px; }
+.bps-timeline .bps-rule::before {
+  content: ""; position: absolute; left: -5px; top: 16px; width: 11px; height: 11px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--bps-navy);
+}
+.bps-timeline .bps-card { max-width: 52ch; }
+.bps-timeline li[data-kind="must"] .bps-rule::before { background: var(--bps-teal); border-color: var(--bps-teal); }
+.bps-timeline li[data-now="true"] .bps-card { border-width: 3px; }
+@media (max-width: 720px) {
+  .bps-timeline li { grid-template-columns: 76px 1px minmax(0, 1fr); gap: 0 12px; }
+  .bps-timeline .bps-card { font-size: .98rem; }
+}
+
+/* Carousel: snap-scrolling row on phones, grid from 900px up. */
+.bps-carousel {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 78%);
+  gap: 18px; overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; padding: 4px 4px 22px; margin: 0 calc(var(--bps-gutter) * -0.35);
+  padding-left: calc(var(--bps-gutter) * 0.35); padding-right: calc(var(--bps-gutter) * 0.35);
+}
+.bps-carousel > * { scroll-snap-align: start; }
+@media (min-width: 900px) {
+  .bps-carousel { grid-auto-flow: row; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); overflow: visible; margin: 0; padding: 4px 0 0; }
+}
+
+/* Photo plate: a real photograph in a matte frame, credit underneath. */
+.bps-photo {
+  margin: 0; border-radius: var(--bps-radius-card); overflow: hidden;
+  box-shadow: 0 8px 0 0 var(--deep), var(--bps-shadow-contact); background: var(--prop);
+}
+.bps-photo img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.bps-photo figcaption {
+  padding: 10px 14px 12px; font-size: .8rem; line-height: 1.35; color: var(--bps-navy-72);
+  background: #fff; border-top: 1.5px solid var(--bps-teal);
+}
+.bps-photo--tall img { aspect-ratio: 3 / 4; }
+.bps-panel { background: #fff; border: 1.5px solid var(--bps-teal); border-radius: var(--bps-radius-card); box-shadow: var(--bps-shadow-card); padding: 18px 20px; }
+.bps-panel h3 { margin: 0 0 .35em; font-size: 1.12rem; font-weight: 800; letter-spacing: -.01em; }
+.bps-panel p { margin: 0 0 .7em; }
+.bps-panel .bps-label { display: block; margin-bottom: .5em; }
+
+/* Rows of links: footer-less utility lists that stay readable on a phone. */
+.bps-rows { display: grid; gap: 10px; }
+.bps-rows a {
+  display: flex; justify-content: space-between; gap: 14px; align-items: baseline;
+  background: #fff; border: 1.5px solid var(--bps-teal); border-radius: 12px;
+  padding: 12px 16px; text-decoration: none; font-weight: 600;
+  box-shadow: var(--bps-shadow-card);
+}
+.bps-rows a span.bps-muted { font-weight: 500; font-size: .85rem; text-align: right; }
+
+/* Chips: small matte labels for a row of facts. */
+.bps-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.bps-chip {
+  display: inline-flex; align-items: center; gap: .45em;
+  background: var(--prop); color: var(--bps-navy);
+  border-radius: var(--bps-radius-pill); padding: 8px 15px;
+  font-size: var(--bps-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  box-shadow: 0 4px 0 0 var(--deep);
+}
+.bps-chip--must { background: var(--bps-teal-pale); box-shadow: 0 4px 0 0 var(--bps-teal-soft); }
+
+/* Map frame: Leaflet or a static map, kept inside the pastel language. */
+.bps-map {
+  height: clamp(320px, 52vh, 520px); width: 100%;
+  border-radius: var(--bps-radius-card); overflow: hidden;
+  border: 1.5px solid var(--bps-navy-12); box-shadow: var(--bps-shadow-contact);
+  background: var(--prop); z-index: 0;
+}
+.bps-map .leaflet-control-attribution { font-size: .68rem; }
+.bps-map-legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.bps-pin { font-size: 1.15rem; line-height: 1; }
+.bps-leaflet-marker { background: none; border: 0; }
+
+/* Phrase rows: the local language, said out loud. */
+.bps-phrases { display: grid; gap: 12px; }
+.bps-phrase { background: #fff; border: 1.5px solid var(--bps-teal); border-radius: 12px; padding: 13px 16px; box-shadow: var(--bps-shadow-card); }
+.bps-phrase strong { display: block; font-size: 1.1rem; font-weight: 700; }
+.bps-phrase em { font-style: normal; color: var(--bps-navy-72); font-size: .88rem; }
+
+/* Reveal on scroll. Killed by prefers-reduced-motion and without JS. */
+.bps-reveal { opacity: 1; }
+html.bps-js .bps-reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+html.bps-js .bps-reveal.bps-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html.bps-js .bps-reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Long chip or long wordmark on a narrow phone: keep one relevant part only. */
+@media (max-width: 560px) { .bps-hide-sm { display: none; } }
