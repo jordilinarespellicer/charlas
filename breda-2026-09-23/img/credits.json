@@ -1,0 +1,62 @@
+{
+  "generated": "2026-09-23T15:25:00+02:00",
+  "note": "City photographs used on this page, all via Wikimedia Commons. Downloaded files are downscaled to 1920 px wide; the credit lines are reproduced in the figcaption of each frame and in the page footer.",
+  "photos": [
+    {
+      "file": "img/havermarkt.jpg",
+      "subject": "Havermarkt, Breda",
+      "author": "G.Lanting",
+      "licence": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Havermarkt_(Breda)_DSCF7472.jpg",
+      "downloaded": "2026-09-23"
+    },
+    {
+      "file": "img/grote-markt.jpg",
+      "subject": "Grote Markt from the Sint Janstraat, Breda",
+      "author": "Renée Kools",
+      "licence": "CC BY 4.0",
+      "source": "Wikimedia Commons",
+      "downloaded": "2026-09-18"
+    },
+    {
+      "file": "img/grote-kerk.jpg",
+      "subject": "Grote of Onze-Lieve-Vrouwekerk, Breda",
+      "author": "Loek Tangel, RCE",
+      "licence": "CC BY-SA 4.0",
+      "source": "Wikimedia Commons",
+      "downloaded": "2026-09-18"
+    },
+    {
+      "file": "img/spanjaardsgat.jpg",
+      "subject": "Spanjaardsgat, Breda",
+      "author": "Renée Kools",
+      "licence": "CC BY 4.0",
+      "source": "Wikimedia Commons",
+      "downloaded": "2026-09-18"
+    },
+    {
+      "file": "img/mural.jpg",
+      "subject": "Hedof, Blind Walls Epic Stories, Breda",
+      "author": "Renée Kools",
+      "licence": "CC BY-SA 4.0",
+      "source": "Wikimedia Commons",
+      "downloaded": "2026-09-18"
+    },
+    {
+      "file": "img/valkenberg.jpg",
+      "subject": "Valkenberg park, Breda",
+      "author": "acediscovery",
+      "licence": "CC BY 4.0",
+      "source": "Wikimedia Commons",
+      "downloaded": "2026-09-18"
+    }
+  ],
+  "generated_images": [
+    {
+      "file": "img/jordi-23-sky.png",
+      "subject": "Cut-out of Jordi Linares-Pellicer, mid-stride with a shoulder bag and a folded programme",
+      "model": "gpt-image-2.5 on Replicate via breda_image.py --me --tone sky",
+      "note": "Generated figure, not a photograph."
+    }
+  ]
+}
