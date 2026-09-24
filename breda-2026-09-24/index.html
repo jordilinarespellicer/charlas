@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Breda, Thursday 24 September — Jordi's agent</title>
   <meta name="description" content="The assistant page for Jordi Linares-Pellicer at AI in the City 2026 in Breda: the day of the keynote, the stops on the map, what to do with the free hours, Dutch phrases and the practical links.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <!-- Every asset of this page is a file next to it: it opens with the wifi off. -->
+  <link rel="stylesheet" href="vendor/figtree.css">
+  <link rel="stylesheet" href="vendor/leaflet.css">
   <link rel="stylesheet" href="breda.css">
   <style>
     .hero-stage { display: grid; grid-template-columns: minmax(175px, 0.85fr) 1.15fr; gap: 24px; align-items: center; }
@@ -63,12 +62,12 @@
       <div>
         <span class="bps-label">AI in the City 2026 · Thursday 24 September</span>
         <h1 class="bps-headline">Breda, Thursday.</h1>
-        <p class="bps-standfirst">It is Thursday 24 September and your keynote is at 11:20 on the main stage of the Chassé Theater. The stay runs from 21 to 26 September. This page is built for the day of the talk and keeps the rest of the week inside it.</p>
+        <p class="bps-standfirst">It is Thursday 24 September and your keynote is at 11:20 in the Em. de Jongzaal of the Chassé Theater, with the stage check at 09:15 and your own laptop. The stay runs from 21 to 26 September. This page is built for the day of the talk and keeps the rest of the week inside it.</p>
         <div class="bps-actions">
           <a class="bps-btn" href="#day">The day, hour by hour</a>
           <a class="bps-btn bps-btn--ghost" href="#do">Walk, listen, eat</a>
         </div>
-        <span class="bps-label bps-muted" style="display:block; margin-top: 26px;">Read on 18 September 2026, 19:38 · Europe/Madrid</span>
+        <span class="bps-label bps-muted" style="display:block; margin-top: 26px;">Read on 24 September 2026, 07:32 · Europe/Madrid</span>
       </div>
       <div class="bps-stage hero-stage" data-wires>
         <span class="bps-sphere" style="--size: 140px; left: 0; top: 2%;" aria-hidden="true"></span>
@@ -80,7 +79,7 @@
         </div>
         <div class="hero-side">
           <div class="bps-disc hero-disc" id="ch-telegram" data-wire-to="#hero-card" data-wire-arrow>Telegram</div>
-          <div class="bps-card bps-card--lg hero-card" id="hero-card">Your message came in on Telegram from the talk. The keynote stays at 11:20 and the slides still have to reach the organisers before Monday at nine. Shall I draft the mail that carries them?</div>
+          <div class="bps-card bps-card--lg hero-card" id="hero-card">Your message came in on Telegram this morning from the centre of Breda. The keynote holds at 11:20 and the machine that carries the demo is the one this page runs on. Leaflet, Figtree and the tiles of central Breda now live in the folder with the page, so it opens in the room with the wifi off. Shall I keep this copy as the one you open on stage?</div>
         </div>
       </div>
     </div>
@@ -95,8 +94,8 @@
 
       <div style="display:grid; gap:18px; margin-bottom: 34px;">
         <div class="bps-card bps-card--lg" style="max-width: 60ch;">
-          <span class="bps-label">Before the trip, still open</span>
-          The slides for the podium have to be with the organisers before Monday 21 September at 09:00. Your calendar carries the deadline, not a confirmation that the file went out, so treat it as open.
+          <span class="bps-label">Still open, and it expires today</span>
+          Your own note asks you to confirm attendance to the congress, full day or keynote only. The organiser's deadline is today, 24 September, and it is two lines to Jan-Willem. Shall I draft them for you to send?
         </div>
         <div class="kit-row">
           <span class="bps-chip bps-chip--must">Own laptop, the demo runs on it</span>
@@ -108,6 +107,11 @@
       </div>
 
       <ul class="bps-timeline">
+        <li data-from="09:15" data-kind="must">
+          <span class="bps-when">09:15</span>
+          <span class="bps-rule" aria-hidden="true"></span>
+          <div class="bps-card"><strong>Stage check at the Chassé, with your own laptop.</strong> This is the hour to open this page in the room, put the demo on the screen and try the adapter. If the venue wifi filters anything, nothing here needs it.</div>
+        </li>
         <li data-from="11:05" data-kind="must">
           <span class="bps-when">11:05</span>
           <span class="bps-rule" aria-hidden="true"></span>
@@ -304,8 +308,8 @@
         <div style="display:grid; gap:18px;">
           <article class="bps-panel">
             <span class="bps-label">What I read</span>
-            <h3>Read on 18 September 2026 at 19:38, Europe/Madrid</h3>
-            <p>Your Google Calendar for 21 to 26 September, your open reminders, your music profile, the JordiBrain entry for this talk, the congress programme for the 23rd, OpenStreetMap for the distances and Wikimedia Commons for the photographs. The city and the date are the ones in your message.</p>
+            <h3>Read on 24 September 2026 at 07:32, Europe/Madrid</h3>
+            <p>Your Google Calendar, this morning, live: the stay from 21 to 26 September and the keynote today at 11:20 in the Em. de Jongzaal, in the room at 11:05, with your own laptop. The JordiBrain entry of this talk, whose next action is the stage check at 09:15. The congress programme, OpenStreetMap for the distances and the photographs, and the tile cache of central Breda, downloaded this morning for the room without wifi.</p>
           </article>
           <article class="bps-panel">
             <span class="bps-label">What I did not read</span>
@@ -328,20 +332,29 @@
     <p style="margin:0;" class="bps-muted">jlinares@dsic.upv.es · LinkedIn: add your handle here</p>
     <p style="margin:12px 0 0;" class="bps-muted">Page built by Jordi's agent on 18 September 2026 for the talk in Breda on 24 September 2026. Nothing on it has been sent or booked for him.</p>
     <p style="margin:6px 0 0;" class="bps-muted">Photographs of the city, all via Wikimedia Commons: Renée Kools (CC BY 4.0 and CC BY-SA 4.0), MichielverbeekNL (CC BY-SA 4.0), Loek Tangel / RCE (CC BY-SA 4.0), Smiley.toerist (CC BY-SA 4.0) and acediscovery (CC BY 4.0). The cut-out of Jordi is a generated image, not a photograph.</p>
-    <p style="margin:6px 0 0;" class="bps-muted">Map tiles and foot routing © OpenStreetMap contributors, map library Leaflet.</p>
+    <p style="margin:6px 0 0;" class="bps-muted">Map tiles and foot routing © OpenStreetMap contributors, map library Leaflet. The map library, the typeface and the tiles of central Breda are stored in this folder, so the page works with no network at all.</p>
   </footer>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="vendor/leaflet.js"></script>
   <script src="route.js"></script>
   <script>
     (function () {
       var el = document.getElementById('breda-map');
       if (!el || typeof L === 'undefined') return;
 
-      var map = L.map(el, { scrollWheelZoom: false, zoomControl: true }).setView([51.5893, 4.7790], 15);
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      var map = L.map(el, {
+        scrollWheelZoom: false,
+        zoomControl: true,
+        minZoom: 14,
+        maxZoom: 16,
+        maxBounds: L.latLngBounds([51.5735, 4.7455], [51.6045, 4.8125]),
+        maxBoundsViscosity: 1.0
+      }).setView([51.5893, 4.7790], 15);
+      // The tiles of central Breda are cached in tiles/, so the map draws with the wifi off.
+      L.tileLayer('tiles/{z}/{x}/{y}.png', {
+        minZoom: 14,
+        maxZoom: 16,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, tiles cached by Jordi\'s agent for offline use'
       }).addTo(map);
 
       var stops = [
@@ -372,6 +385,7 @@
         map.fitBounds(L.latLngBounds(window.BPS_ROUTE).pad(0.12), { maxZoom: 16 });
       }
       setTimeout(function () { map.invalidateSize(); }, 300);
+      window.bpsMap = map;
     })();
   </script>
   <script src="wires.js"></script>
